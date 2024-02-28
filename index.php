@@ -12,7 +12,10 @@ switch ($mod) {
 					// echo "<br>Trang login.";
 		$user_controller->login();
 		break;
-		
+		case 'find':
+			// echo "<br>check.";
+		$user_controller->find();
+		break;
 		default:
 		echo "<br>không có gì hết.";
 		break;

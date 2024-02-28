@@ -138,15 +138,15 @@ a[target='_blank'] {
                     <h3 class="pt-3 font-weight-bold">Login</h3>
                 </div>
                 <div class="panel-body p-3">
-                    <form action="login_script.php" method="POST">
+                    <form action="?mod=user&act=find" method="POST" role="form" enctype="multipart/form-data">
                         <div class="form-group py-2">
-                            <div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" placeholder="Username or Email" required> </div>
+                            <div class="input-field"> <span class="far fa-user p-2"></span> <input type="email" placeholder="Email" name="email" required> </div>
                         </div>
                         <div class="form-group py-1 pb-2">
-                            <div class="input-field"> <span class="fas fa-lock px-2"></span> <input type="password" placeholder="Enter your Password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
+                            <div class="input-field"> <span class="fas fa-lock px-2"></span> <input type="password" placeholder="Enter your Password" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
                         </div>
                         <div class="form-inline"> <input type="checkbox" name="remember" id="remember"> <label for="remember" class="text-muted">Remember me</label> <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a> </div>
-                        <div class="btn btn-primary btn-block mt-3">Login</div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
                         <div class="text-center pt-4 text-muted">Don't have an account? <a href="#">Sign up</a> </div>
                     </form>
                 </div>
