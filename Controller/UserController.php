@@ -7,7 +7,7 @@
 			//$this->model = new User();
 		}
         function login(){
-			$data = $this->model->All();
+			//$data = $this->model->All();
 			require_once('View/login.php');
 		}
     }
