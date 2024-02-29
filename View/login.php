@@ -156,6 +156,16 @@ a[target='_blank'] {
             </div>
         </div>
     </div>
+    <?php 
+        if (isset($_COOKIE['msg'])) {
+    ?>
+    <div class="alert alert-danger">
+  <?php echo $_COOKIE['msg']; ?>
+</div>
+    <?php        
+        }
+     ?>
+    <hr>
 </div>
                             <script type='text/javascript'></script>
                             </body>

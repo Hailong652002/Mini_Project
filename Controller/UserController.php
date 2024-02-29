@@ -17,9 +17,8 @@
 			if($this->model->find($email,$pass)){
 				require_once('View/d.php');
 			}else{
-
-			require_once('View/login.php');
-			}
+				setcookie('msg','Sai tài khoản hoặc mật khẩu',time()+1);
+				header('location: index.php?mod=user&act=login');			}
 		}
     }
 ?>
