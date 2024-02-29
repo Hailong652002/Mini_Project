@@ -16,9 +16,10 @@
 			
 			if($this->model->find($email,$pass)){
 				require_once('View/d.php');
-			}
+			}else{
+
 			require_once('View/login.php');
-			
+			}
 		}
     }
 ?>

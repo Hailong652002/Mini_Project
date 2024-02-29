@@ -14,28 +14,19 @@
 		}
 */
 		function find($email,$pass){
-			require_once('db_connect.php');
+			require_once('db_connect.php');//đổi logic sng controllẻ
 			$sql = "SELECT * FROM users WHERE email='".$email."'";
-			$data = $conn->query($sql);
-            if ($data->num_rows > 0) {
-                // Email tồn tại trong cơ sở dữ liệu
-                echo '<script>alert("Email đã tồn tại!")</script>';
-                return true;
-            } else {
-                // Email không tồn tại trong cơ sở dữ liệu
-                return false;
-            }
-            /*
+			$data = $conn->query($sql)->fetch_assoc();
             if($data){
-                if ($data['password']==$pass) {//password_verify($pass, $data['password'])
+                if (password_verify($pass, $data['password'])) {//
                     return true;
                 } else {
                     // Mật khẩu sai, trả về false
                     return false;
                 }
-            }*/
-            //ko co email
-			//return false;
+            }else{
+				return false;
+			}
 		}
         
 /*
