@@ -14,11 +14,18 @@
 			$email = $_POST['email'];
 			$pass = $_POST['password'];
 			
-			if($this->model->find($email,$pass)){
+			//validate
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				setcookie('msg','Email không hợp lệ',time()+1);
+				header('location: index.php?mod=user&act=login');	
+			} else {//matkhau
+				if($this->model->find($email,$pass)){
 				require_once('View/d.php');
-			}else{
-				setcookie('msg','Sai tài khoản hoặc mật khẩu',time()+1);
-				header('location: index.php?mod=user&act=login');			}
+				}else{
+					setcookie('msg','Sai tài khoản hoặc mật khẩu',time()+1);
+					header('location: index.php?mod=user&act=login');
+				}
+			}
 		}
     }
 ?>
