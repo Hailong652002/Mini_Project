@@ -21,7 +21,7 @@ class Posts{
 */
     function insert($data){
         require_once('db_connect.php');
-        $sql = "INSERT INTO employees (code,name,mobile,email,address,password) VALUES ('".$data['code']."','".$data['name']."','".$data['mobile']."','".$data['email']."','".$data['address']."','".md5($data['password'])."')";
+        $sql = "INSERT INTO Posts (title,content,image) VALUES ('".$data['code']."','".$data['name']."','".$data['mobile']."','".$data['email']."','".$data['address']."','".md5($data['password'])."')";
         $result = $conn->query($sql);
         return $result;
     }
