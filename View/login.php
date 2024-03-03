@@ -145,7 +145,7 @@ a[target='_blank'] {
                         <div class="form-group py-1 pb-2">
                             <div class="input-field"> <span class="fas fa-lock px-2"></span> <input type="password" placeholder="Enter your Password" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
                         </div>
-                        <div class="form-inline"> <input type="checkbox" name="remember" id="remember"> <label for="remember" class="text-muted">Remember me</label> <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a> </div>
+                        <div class="form-inline"> <input type="checkbox" name="myCheckbox" id="remember"> <label for="remember" class="text-muted">Remember me</label> <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a> </div>
                         <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
                         <div class="text-center pt-4 text-muted">Don't have an account? <a href="#">Sign up</a> </div>
                     </form>

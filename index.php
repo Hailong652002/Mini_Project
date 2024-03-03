@@ -1,27 +1,31 @@
 <?php 
-// $mod = isset($_GET['mod'])?$_GET['mod']:'user';
-// $act = isset($_GET['act'])?$_GET['act']:'login';
+	$mod = isset($_GET['mod'])?$_GET['mod']:'user';
+	$act = isset($_GET['act'])?$_GET['act']:'login';
+	switch ($mod) {
+	    case 'user':
+	    require_once('Controller/UserController.php');
+	    $user_controller=new UserController();
 
-// switch ($mod) {
-//     case 'user':
-//     require_once('Controller/UserController.php');
-//     $user_controller=new UserController();
-    
-//     switch ($act) {
-// 		case 'login':
-// 					// echo "<br>Trang login.";
-// 		$user_controller->login();
-// 		break;
-// 		case 'find':
-// 			// echo "<br>check.";
-// 		$user_controller->find();
-// 		break;
-// 		default:
-// 		echo "<br>không có gì hết.";
-// 		break;
-// 	}
-//     break;
-// }
+	    switch ($act) {
+			case 'login':
+						// echo "<br>Trang login.";
+			$user_controller->login();
+			break;
+			case 'find':
+				// echo "<br>check.";
+			$user_controller->find();
+			break;
+			//dangxuat
+			case 'logout':
+			$user_controller->logout();
+			break;
+			default:
+			echo "<br>không có gì hết.";
+			break;
+		}
+	    break;
+	}
+	/*
 session_start();
 $controller = isset($_GET['controller'])
 	? $_GET['controller'] : 'posts';
@@ -42,3 +46,4 @@ $controller = isset($_GET['controller'])
 	}
 	$object->$action();
 ?>
+*/
