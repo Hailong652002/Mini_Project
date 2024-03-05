@@ -8,9 +8,15 @@
 		}
         function login(){
 			//$data = $this->model->All();
-			require_once('View/login.php');
+			if (isset($_COOKIE['user_id'])){
+				require_once('View/d.php');
+
+			}else{			require_once('View/login.php');
+
+				}
 		}
 		function find(){
+			
 			$email = $_POST['email'];
 			$pass = $_POST['password'];
 			
@@ -20,12 +26,23 @@
 				header('location: index.php?mod=user&act=login');	
 			} else {//matkhau
 				if($this->model->find($email,$pass)){
-				require_once('View/d.php');
+					if (isset($_POST["myCheckbox"])) {
+						setcookie('user_id', $email, time() + (3600 * 24 * 7));
+						require_once('View/d.php');
+					}else{
+						require_once('View/d.php');
+
+					}
 				}else{
 					setcookie('msg','Sai tài khoản hoặc mật khẩu',time()+1);
 					header('location: index.php?mod=user&act=login');
 				}
 			}
 		}
+		function logout(){
+			setcookie('user_id', '', time() - 3600);
+			header('location: index.php?mod=user&act=login');
+		}
+		
     }
 ?>
