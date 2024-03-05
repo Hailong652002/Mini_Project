@@ -31,10 +31,10 @@ class Posts{
     return $posts;
     }
 
-    public function getBookById($id = null) {
+    public function getPostById($id) {
     require_once('db_connect.php');
     $querySelect = "SELECT * FROM posts WHERE idposts=$id";
-    $data = $conn->query($sql)->fetch_assoc();
+    $results = mysqli_query($conn, $querySelect);
     $posts = [];
     if (mysqli_num_rows($results) > 0) {
         $posts = mysqli_fetch_all($results, MYSQLI_ASSOC);
@@ -47,26 +47,28 @@ class Posts{
     public function update($posts = []) {
         require_once('db_connect.php');
         $queryUpdate = "UPDATE posts 
-    SET `title` = '{$posts['title']}',`conetent` = '{$posts['conttent']}',`images` = '{$posts['images']}'  WHERE `idposts` = {$posts['id']}";
-        $isUpdate = mysqli_query($connection, $queryUpdate);
+    SET `title` = '{$posts['title']}',`content` = '{$posts['content']}',`images` = '{$posts['image']}'  WHERE `posts`".'.'."`idposts` = {$posts['idposts']}";
+       // $isUpdate = mysqli_query($conn, $queryUpdate);
+       echo $queryUpdate;
+      mysqli_query($conn,$queryUpdate);
         mysqli_close($conn);
-        return $isUpdate;
+       // return $isUpdate;
     }
 
-    public function delete($id = null) {
+    public function delete($id) {
         require_once('db_connect.php');
-        $queryDelete = "DELETE FROM books WHERE idposts = $id";
-        $isDelete = mysqli_query($connection, $queryDelete);
+        $queryDelete = "DELETE FROM posts WHERE idposts = $id";
+        $isDelete = mysqli_query($conn, $queryDelete);
         mysqli_close($conn);
-
+        return $isDelete;
     }
 
     function insert($data){
         require_once('db_connect.php');
-        $sql = "INSERT INTO Posts (title,content,images) VALUES ('".$data['title']."','".$data['content']."','".$data['images']."')'";
-        $result = $conn->query($sql);
+        $sql = "INSERT INTO posts(title,content,images) 
+        VALUES ('".$data['title']."','".$data['content']."','".$data['images']."')";
+        $conn->query($sql);
         mysqli_close($conn);
-        return $result;
     }
 
     

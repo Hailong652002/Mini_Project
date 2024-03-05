@@ -1,25 +1,12 @@
 <DOCTYPE html>
     <!-- Coding by CodingLab | www.codinglabweb.com -->
     <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!----======== CSS ======== -->
-        <link rel="stylesheet" href="../Public/css/style1.css">
-        
-        <!----===== Boxicons CSS ===== -->
-        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>   <!--<title>Dashboard Sidebar Menu</title>--> 
-    </head>
-    <div> <!--css-->
-    </div>
-    
     <body>
         <nav class="sidebar close">
             <header>
                 <div class="image-text">
                     <span class="image">
-                        <img src="../Public/img/tải xuống.jpeg" alt="">
+                        <img src="./Public/img/tải xuống.jpeg" alt="">
                     </span>
     
                     <div class="text logo-text">
@@ -30,7 +17,6 @@
     
                 <i class='bx bx-chevron-right toggle'></i>
             </header>
-    
             <div class="menu-bar">
                 <div class="menu">
                     <ul class="menu-links">
@@ -57,17 +43,28 @@
         </nav>
         <section class="home">
             <?php 
-                 if (!empty($p)):
-                    foreach ($p AS $posts):
+                 if (!empty($posts)):
+                    foreach ($posts AS $p):
             ?>
         <div class="text">
                 <form >
                     <table>
+                    <?php
+                    //khai báo 3 url xem, sửa, xóa
+                    $urlDetail =
+                        "index.php?Controller=post&action=detail&id=" . $p['idposts'];
+                    $urlEdit =
+                        "index.php?Controller=post&action=edit&id=" . $p['idposts'];
+                    $urlDelete =
+                        "index.php?Controller=post&action=delete&id=" . $p['idposts'];
+                    ?>
+                        <a href="<?php echo $urlEdit ?>"><i class="bi bi-pencil-fill"></i></i></a>
+                        <a href="<?php echo $urlDelete ?>"><i class="bi bi-x-circle-fill"></i></a>
                         <tr>
-                            <td class="title"><?php echo $posts['title'] ?></td>
+                            <td class="title"><?php echo $p['title'] ?></td>
                         </tr>
                         <tr>
-                            <td class="content"><?php echo $posts['content'] ?></td>
+                            <td class="content"><?php echo $p['content'] ?></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -84,12 +81,27 @@
         <?php endif; ?>
         </section>
         <style>
+            table{
+                position: relative;
+            }
+            table a{
+                position:absolute;
+                top:0;
+            }
+            a i{
+                color:red;
+                right: 0 !important;
+            }
+
         /* CSS for the table */
         .title{
             padding: 0 10px;
         }
         .content{
             font-size: 11px;
+        }
+        .text{
+            display: inline-block;
         }
         table {
             border-collapse: collapse;
