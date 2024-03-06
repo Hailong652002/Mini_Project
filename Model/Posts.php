@@ -40,17 +40,17 @@ class Posts{
         $posts = mysqli_fetch_all($results, MYSQLI_ASSOC);
         $post = $posts[0];
     }
-    mysqli_close($conn);
+    
     return $post;
     }
 
     public function update($posts = []) {
         require_once('db_connect.php');
         $queryUpdate = "UPDATE posts 
-    SET `title` = '{$posts['title']}',`content` = '{$posts['content']}',`images` = '{$posts['image']}'  WHERE `posts`".'.'."`idposts` = {$posts['idposts']}";
+    SET `title` = '{$posts['title']}',`content` = '{$posts['content']}',`images` = '{$posts['image']}'  WHERE `idposts` = {$posts['idposts']}";
        // $isUpdate = mysqli_query($conn, $queryUpdate);
        echo $queryUpdate;
-      mysqli_query($conn,$queryUpdate);
+        $conn->query($queryUpdate);
         mysqli_close($conn);
        // return $isUpdate;
     }

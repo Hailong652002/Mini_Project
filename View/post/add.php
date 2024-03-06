@@ -21,7 +21,7 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="<?php echo "index.php?Controller=post&action=list"?>">
                                 <i class='bx bx-home-alt icon' ></i>
                                 <span class="text nav-text">Quản lý bài viết</span>
                             </a>
@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="link" name="image"></td>
+                    <td><input type="file" name="image"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>

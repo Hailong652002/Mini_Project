@@ -17,8 +17,7 @@
 
 <?php 
 
-	$mod = isset($_GET['mod'])?$_GET['mod']:'user';
-	$act = isset($_GET['act'])?$_GET['act']:'login';
+	
 	switch ($mod) {
 	    case 'user':
 	    require_once('Controller/UserController.php');

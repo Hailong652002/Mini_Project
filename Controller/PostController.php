@@ -26,26 +26,27 @@ switch($action){
                     $isInsert = $post->insert($postArr);
                     if ($isInsert) {
                         $_SESSION['success'] = "Thêm mới thành công";
+                        //header("Location: index.php?Controller=post&action=list");
                     }
                     else {
                         $_SESSION['error'] = "Thêm mới thất bại";
+                        header("Location: index.php?Controller=post&action=list");
                     }
-                    header("Location: index.php?Controller=post&action=list");
-                    exit();
+                   
                  }
             }
 		require_once('View/post/add.php');
 		break;
 	}
-	case'edit':{
+	case'edit':{  
         if (!isset($_GET['id'])) {
             $_SESSION['error'] = "Tham số không hợp lệ";
-            header("Location: /Mini_Project/?Controller=post&action=list");
+            header("Location: index.php?Controller=post&action=list");
             return;
         }
         if (!is_numeric($_GET['id'])) {
             $_SESSION['error'] = "Id phải là số";
-            header("Location: /Mini_Project/?Controller=post&action=list");
+            header("Location: index.php?Controller=post&action=list");
             return;
         }
         $id = $_GET['id'];
@@ -63,7 +64,7 @@ switch($action){
                 $error = "title và content không được để trống";
             }
             else {
-                $postModel = new Posts();
+                //$postModel = new Posts();
                 $postArr = [
                     'idposts' => $id,
                     'title' => $title,
@@ -72,12 +73,17 @@ switch($action){
                 ];
                 //print_r($postArr);
                 
-                $postModel->update($postArr);
-               
+                $sql = "UPDATE posts 
+                SET `title` = '{$postArr['title']}',`content` = '{$postArr['content']}',`images` = '{$postArr['image']}'  WHERE `idposts` = $id";
+                //$postModel->update($postArr);
+                echo $sql;
+                $conn->querry($sql);
+                echo "1";
+                mysqli_close($conn);
                
             }
         }
-        require_once('View/post/edit.php');
+        require_once('View/post/edit.php'); 
         break;
 	}
 
@@ -94,10 +100,12 @@ switch($action){
             //chuyển hướng về trang liệt kê danh sách
             //tạo session thông báo mesage
             $_SESSION['success'] = "Xóa bản ghi #$id thành công";
+            
         }
         else {
             //báo lỗi
             $_SESSION['error'] = "Xóa bản ghi #$id thất bại";
+            
         }
         header("Location: index.php?Controller=post&action=list");
         break;

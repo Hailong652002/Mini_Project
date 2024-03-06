@@ -21,7 +21,7 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="<?php echo "index.php?Controller=post&action=list"?>">
                                 <i class='bx bx-home-alt icon' ></i>
                                 <span class="text nav-text">Quản lý bài viết</span>
                             </a>
@@ -60,7 +60,7 @@
                     $urlDelete =
                         "index.php?Controller=post&action=delete&id=" . $p['idposts'];
                     ?>
-                        <a href="<?php echo $urlEdit ?>"><i class="bi bi-pencil-fill"></i></i></a>
+                        <a style="color:blue !important;" href="<?php echo $urlEdit ?>"><i class="bi bi-pencil-fill"></i></i></a>
                         <a href="<?php echo $urlDelete ?>"><i class="bi bi-x-circle-fill"></i></a>
                         <tr>
                             <td class="title"><?php echo $p['title'] ?></td>
@@ -69,7 +69,7 @@
                             <td class="content"><?php echo $p['content'] ?></td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td><img src="https://baogiaothong.mediacdn.vn/upload/2-2022/images/2022-04-18/1-1650247268-869-width740height555.jpg" alt=""> &nbsp;</td>
                         </tr>
                     </table>
 
@@ -83,6 +83,9 @@
         <?php endif; ?>
         </section>
         <style>
+            img{
+               width: 200px;
+            }
             table{
                 position: relative;
             }
