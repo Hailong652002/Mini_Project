@@ -1,14 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sua bai viet</title>
-</head>
-<body>
-    <div class="content">
-        <h3>sua bai viet</h3>
+<DOCTYPE html>
+    <!-- Coding by CodingLab | www.codinglabweb.com -->
+    <html lang="en">
+    <body>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="./Public/img/tải xuống.jpeg" alt="">
+                    </span>
+    
+                    <div class="text logo-text">
+                        <span class="name">User</span>
+                        <span class="profession">Web developer</span>
+                    </div>
+                </div>
+    
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon' ></i>
+                                <span class="text nav-text">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+    
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="?mod=user&act=logout">
+                            <i class='bx bx-log-out icon' ></i>
+                            <span class="text nav-text">Đăng xuất
+                
+                            </span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+    
+        </nav>
+        <section class="home">
+        <div class="text">
+        
         <form action="" method="POST">
             <table>
                 <tr>
@@ -32,6 +69,23 @@
                 </tr>
             </table>
         </form>
-    </div>
-</body>
+        </div>
+        </section>
+        
+
+        <script>
+            const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            // modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+    
+    toggle.addEventListener("click" , () =>{
+        sidebar.classList.toggle("close");
+    })
+    
+        </script>
+    </body>
 </html>
+ 
+  
