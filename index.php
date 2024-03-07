@@ -16,6 +16,7 @@
 </html>
 
 <?php 
+session_start();
 if(!isset($_GET['Controller'])){
 	$mod = isset($_GET['mod'])?$_GET['mod']:'user';
 	$act = isset($_GET['act'])?$_GET['act']:'login';
@@ -69,7 +70,16 @@ if(!isset($_GET['Controller'])){
 
 
 if(isset($_GET['Controller'])){
+	if ($_SESSION['logged_in']){//neu da dang nhap thi moi sudung dc
 	$controller = $_GET['Controller'];
+	
+}else{
+		require_once('Controller/UserController.php');
+	    $user_controller=new UserController();
+		$user_controller->login();
+
+	}
+
 }
 else
 	$controller='';
