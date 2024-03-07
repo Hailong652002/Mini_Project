@@ -8,7 +8,7 @@
 		}
         function login(){
 			//$data = $this->model->All();
-			if (isset($_COOKIE['user_id'])){//neu van dang dang nhap
+			if (isset($_COOKIE['email'])){//neu van dang dang nhap
 				include './Model/Posts.php';
 				$Posts = new Posts();
 				$posts = $Posts->index();
@@ -17,7 +17,7 @@
 				require_once('View/login.php');
 				}
 		}
-		function find(){
+		function check(){
 			
 			$email = $_POST['email'];
 			$pass = $_POST['password'];
@@ -27,9 +27,9 @@
 				setcookie('msg','Email không hợp lệ',time()+1);
 				header('location: index.php?mod=user&act=login');	
 			} else {//matkhau
-				if($this->model->find($email,$pass)){
+				if($this->model->check($email,$pass)){
 					if (isset($_POST["myCheckbox"])) {
-						setcookie('user_id', $email, time() + (3600 * 24 * 7));
+						setcookie('email', $email, time() + (3600 * 24 * 7));
 						header('location: index.php?Controller=post&action=');
 						
 					}else{
@@ -44,7 +44,7 @@
 			}
 		}
 		function logout(){
-			setcookie('user_id', '', time() - 3600);
+			setcookie('email', '', time() - 3600);
 			header('location: index.php?mod=user&act=login');
 		}
 		

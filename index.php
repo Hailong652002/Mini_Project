@@ -32,7 +32,7 @@ if(!isset($_GET['Controller'])){
 			break;
 			case 'find':
 				// echo "<br>check.";
-			$user_controller->find();
+			$user_controller->check();
 			break;
 			//dangxuat
 			case 'logout':
