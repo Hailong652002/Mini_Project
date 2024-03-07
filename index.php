@@ -73,7 +73,7 @@ if(isset($_GET['Controller'])){
 	if ($_SESSION['logged_in']){//neu da dang nhap thi moi sudung dc
 	$controller = $_GET['Controller'];
 	
-}else{
+}else{//neu nhu chua co phien dang nhap
 		require_once('Controller/UserController.php');
 	    $user_controller=new UserController();
 		$user_controller->login();

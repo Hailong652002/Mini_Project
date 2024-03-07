@@ -8,15 +8,18 @@
 		}
         function login(){
 			//$data = $this->model->All();
-			if (isset($_COOKIE['email'])){//neu van dang dang nhap(remberme)
-				include './Model/Posts.php';
-				$Posts = new Posts();
-				$posts = $Posts->index();
+			if (isset($_COOKIE['email'])){//neu van dang dang nhap(remberme) va muon vao login
+				
 				$_SESSION['logged_in'] = true;//tiep tuc phien lam viec
-				require_once('View/post/list.php');
-			}else{//neu k dung 
-				require_once('View/login.php');
-				}
+				header('location: index.php?Controller=post&action=');
+
+			}elseif($_SESSION['logged_in']){//neu k dung remember ma muon vao trang login
+				header('location: index.php?Controller=post&action=');
+
+				
+				}else{
+					require_once('View/login.php');
+					}
 		}
 		function check(){
 			
