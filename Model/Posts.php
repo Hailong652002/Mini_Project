@@ -48,11 +48,9 @@ class Posts{
         require_once('db_connect.php');
         $queryUpdate = "UPDATE posts 
     SET `title` = '{$posts['title']}',`content` = '{$posts['content']}',`images` = '{$posts['image']}'  WHERE `idposts` = {$posts['idposts']}";
-       // $isUpdate = mysqli_query($conn, $queryUpdate);
-       echo $queryUpdate;
-        $conn->query($queryUpdate);
+        $isUpdate = mysqli_query($conn, $queryUpdate);
         mysqli_close($conn);
-       // return $isUpdate;
+        return $isUpdate;
     }
 
     public function delete($id) {

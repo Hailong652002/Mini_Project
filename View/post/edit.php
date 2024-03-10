@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="link" name="image"
+                    <td><input type="file" name="image"
                     value="<?php echo isset($_POST['images']) ? $_POST['images'] : $posts['images']?>"></td>
                 </tr>
                 <tr>
