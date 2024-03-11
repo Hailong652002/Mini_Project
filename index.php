@@ -30,23 +30,35 @@ if(!isset($_GET['Controller'])){
 
 		}
 }
-require_once('Controller/PostController.php');
-$controller = isset($_GET['Controller'])
-	? $_GET['Controller'] : 'post';
-	$action = isset($_GET['action']) ? $_GET['action'] : 'index';
-	$controller = ucfirst($controller);
-	$fileController = $controller . "Controller.php";
-	$pathController = "Controller/$fileController";
-	
-	if (!file_exists($pathController)) {
-		die("Trang bạn tìm không tồn tại");
-	}
-	$classController = $controller."Controller";
-	$object = new $classController();
-	if (!method_exists($object, $action)) {
-		die("Phương thức $action
-		 không tồn tại trong class $classController");
-	}
-	$object->$action()
 
+if(isset($_GET['Controller'])){
+	if ($_SESSION['logged_in']){//neu da dang nhap thi moi sudung dc
+
+		require_once('Controller/PostController.php');
+		$controller = isset($_GET['Controller'])
+			? $_GET['Controller'] : 'post';
+			$action = isset($_GET['action']) ? $_GET['action'] : 'index';
+			$controller = ucfirst($controller);
+			$fileController = $controller . "Controller.php";
+			$pathController = "Controller/$fileController";
+			
+			if (!file_exists($pathController)) {
+				die("Trang bạn tìm không tồn tại");
+			}
+			$classController = $controller."Controller";
+			$object = new $classController();
+			if (!method_exists($object, $action)) {
+				die("Phương thức $action
+				không tồn tại trong class $classController");
+			}
+			$object->$action();
+	}else{
+		require_once('Controller/UserController.php');
+		//setcookie('msg','Chưa đăng nhập',time()+1);
+	    $user_controller=new UserController();
+		$user_controller->login();
+	}
+
+
+}
 ?>
