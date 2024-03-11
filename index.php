@@ -30,7 +30,6 @@ if(!isset($_GET['Controller'])){
 
 		}
 }
-session_start();
 require_once('Controller/PostController.php');
 $controller = isset($_GET['Controller'])
 	? $_GET['Controller'] : 'post';
