@@ -4,7 +4,8 @@
 	{	
         var $model;
 		function __construct(){
-			$this->model = new User();
+			require_once 'Model/db_connect.php';
+			$this->model = new User($conn);
 		}
         function login(){
 			//$data = $this->model->All();

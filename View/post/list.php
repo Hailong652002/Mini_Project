@@ -1,6 +1,15 @@
-<DOCTYPE html>
-    <!-- Coding by CodingLab | www.codinglabweb.com -->
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!----======== CSS ======== -->
+        <link rel="stylesheet" href="./Public/css/style1.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!----===== Boxicons CSS ===== -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>   <!--<title>Dashboard Sidebar Menu</title>--> 
+    </head>
     <body>
         <nav class="sidebar close">
             <header>
@@ -21,7 +30,7 @@
                 <div class="menu">
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="<?php echo "index.php?Controller=post&action=list"?>">
+                            <a href="<?php echo "index.php?Controller=post&action=index"?>">
                                 <i class='bx bx-home-alt icon' ></i>
                                 <span class="text nav-text">Quản lý bài viết</span>
                             </a>

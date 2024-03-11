@@ -1,23 +1,32 @@
-<?php 			
-	
-	class User{
-        
-		function check($email,$pass){
-			require_once('db_connect.php');//đổi logic sng controllẻ
-			$sql = "SELECT * FROM users WHERE email='".$email."'";
-			$data = $conn->query($sql)->fetch_assoc();
-            if($data){
-                if (password_verify($pass, $data['password'])) {//
-                    return true;
-                } else {
-                    // Mật khẩu sai, trả về false
-                    return false;
-                }
-            }else{
-				return false;
-			}
-		}
-        
+<?php
 
-	}
- ?>
+class User{
+    private $conn;
+
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+
+    public function check($email, $pass) {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($data) {
+            if (password_verify($pass, $data['password'])) {
+                // Mật khẩu đúng, trả về true
+                return true;
+            } else {
+                // Mật khẩu sai, trả về false
+                return false;
+            }
+        } else {
+            // Không tìm thấy người dùng, trả về false
+            return false;
+        }
+    }
+}
+
+?>

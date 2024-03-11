@@ -1,15 +1,16 @@
 <?php
-$servername = "localhost";
+// Khai báo thông tin kết nối
+$host = "localhost";
+$dbname = "miniproject";
 $username = "root";
 $password = "";
-$dbname = "miniproject";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-$conn->set_charset("utf8");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
+// Tạo kết nối PDO
+try {
+  $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Lỗi kết nối: " . $e->getMessage();
+  die();
+}
 ?>
