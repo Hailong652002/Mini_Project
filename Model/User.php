@@ -68,18 +68,22 @@ class User{
         }
     public function checktoken(){
         require_once('db_connect.php');
-
-        $sql = "SELECT * FROM users WHERE token = :token and timet> NOW()";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':token', $token);
-        $token=$_COOKIE['remember_me'];
-        $stmt->execute();
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($data) {
-            return true;
+        if (isset($_COOKIE['remember_me'])){
+             $sql = "SELECT * FROM users WHERE token = :token and timet> NOW()";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':token', $token);
+            $token=$_COOKIE['remember_me'];
+            $stmt->execute();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($data) {
+                return true;
+            }else{
+                return false;
+                }
         }else{
-            return true;
-            }
+            return false;
+        }
+       
     }
 }
 

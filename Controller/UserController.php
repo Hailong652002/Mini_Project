@@ -9,7 +9,7 @@
 		}
         function login(){//timt < or khong o thi
 			
-			if (isset($_COOKIE['remember_me']) && $this->model->checktoken()){//neu van dang dang nhap(remberme) va muon vao login and vao. xoa côkie di
+			if ($this->model->checktoken()){//neu van dang dang nhap(remberme) va muon vao login and vao. xoa côkie di
 				
 				$_SESSION['logged_in'] = true;//tiep tuc phien lam viec
 				header('location: index.php?Controller=post&action=index');
