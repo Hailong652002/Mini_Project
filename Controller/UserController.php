@@ -3,11 +3,11 @@
 	class UserController
 	{	
         private $model;
-		function __construct(){
+		public function __construct(){
 			require_once 'Model/db_connect.php';
 			$this->model = new User($conn);
 		}
-        function login(){//timt < or khong o thi
+        public function login(){//timt < or khong o thi
 			
 			if ($this->model->checktoken()){//neu van dang dang nhap(remberme) va muon vao login and vao. xoa côkie di
 				
@@ -28,7 +28,7 @@
 				require_once('View/login.php');
 			}
 		}
-		function check(){
+		public function check(){
 			
 			$email = $_POST['email'];
 			$pass = $_POST['password'];
@@ -62,7 +62,7 @@
 				}
 			}
 		}
-		function logout(){
+		public function logout(){
 			//setcookie('email', '', time() - 3600);
 			if (isset($_COOKIE['remember_me'])){
 				$this->model->deletetoken($email);
