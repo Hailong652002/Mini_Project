@@ -69,6 +69,10 @@ class PostController{
               require_once('View/post/add.php');
             //
             }else{
+                if (isset($_COOKIE['remember_me'])){
+					setcookie('remember_me', '', time() - 3600, '/');	
+				}
+				unset($_SESSION['logged_in']);
                 require_once 'View/login.php';
                 }
         }else{
@@ -150,6 +154,10 @@ class PostController{
                 require_once 'View/post/edit.php';
             //
             }else{
+                if (isset($_COOKIE['remember_me'])){
+					setcookie('remember_me', '', time() - 3600, '/');	
+				}
+				unset($_SESSION['logged_in']);
                 require_once 'View/login.php';
                 }
         }else{
@@ -228,6 +236,10 @@ class PostController{
                 exit();
             //
             }else{
+                if (isset($_COOKIE['remember_me'])){
+					setcookie('remember_me', '', time() - 3600, '/');	
+				}
+				unset($_SESSION['logged_in']);
                 require_once 'View/login.php';
                 }
         }else{
