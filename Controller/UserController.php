@@ -11,16 +11,22 @@
 			
 			if ($this->model->checktoken()){//neu van dang dang nhap(remberme) va muon vao login and vao. xoa côkie di
 				
-				$_SESSION['logged_in'] = true;//tiep tuc phien lam viec
+				//$_SESSION['logged_in'] = true;//tiep tuc phien lam viec
+				if (!isset($_SESSION['logged_in'])){
+					$this->model->createsswithr();
+
+				}
 				header('location: index.php?Controller=post&action=index');
 
-			}elseif($_SESSION['logged_in']){//neu k dung remember ma muon vao trang login
-				header('location: index.php?Controller=post&action=index');
-
-				
-				}else{
-					require_once('View/login.php');
-					}
+			}elseif(isset($_SESSION['logged_in'])){//neu k dung remember ma muon vao trang login
+				header('location: index.php?Controller=post&action=index');	
+			}else{
+				if (isset($_COOKIE['remember_me'])){
+					setcookie('remember_me', '', time() - 3600, '/');	
+				}
+				unset($_SESSION['logged_in']);
+				require_once('View/login.php');
+			}
 		}
 		function check(){
 			
@@ -36,12 +42,16 @@
 					if (isset($_POST["myCheckbox"])) {
 						//setcookie('email', $email, time() + (3600 * 24 * 7));
 						
-						$_SESSION['logged_in'] = true;
+						//$_SESSION['logged_in'] = true;
+						$this->model->createss($email);
+
 						$this->model->createtoken($email);
 						header('location: index.php?Controller=post&action=index');
 						
 					}else{
-						$_SESSION['logged_in'] = true;
+						//$_SESSION['logged_in'] = true;
+						$this->model->createss($email);
+
 						header('location: index.php?Controller=post&action=index');
 
 
@@ -58,8 +68,7 @@
 				$this->model->deletetoken($email);
 
 			}
-
-			$_SESSION['logged_in'] = false;
+			unset($_SESSION['logged_in']);
 			header('location: index.php?mod=user&act=login');
 		}
 		

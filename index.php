@@ -32,7 +32,7 @@ if(!isset($_GET['Controller'])){
 }
 
 if(isset($_GET['Controller'])){
-	if ($_SESSION['logged_in']){//neu da dang nhap thi moi sudung dc
+	if (isset($_SESSION['logged_in'])){//neu da dang nhap thi moi sudung dc
 
 		require_once('Controller/PostController.php');
 		$controller = isset($_GET['Controller'])

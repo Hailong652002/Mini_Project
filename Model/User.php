@@ -85,6 +85,20 @@ class User{
         }
        
     }
+    public function createss($email){
+        $_SESSION['logged_in'] =password_hash($email, PASSWORD_DEFAULT);
+
+    }
+    public function createsswithr(){
+        require_once('db_connect.php');
+        $sql = "SELECT * FROM users WHERE token = :token";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':token', $token);
+        $token=$_COOKIE['remember_me'];
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['logged_in'] =password_hash($data['email'], PASSWORD_DEFAULT);
+    }
 }
 
 ?>
