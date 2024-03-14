@@ -38,7 +38,8 @@
                         
                     </ul>
                 </div>
-    
+                <a class="btn btn-primary" href="<?php echo "index.php?Controller=post&action=add"?>" role="button">Link</a>
+
                 <div class="bottom-content">
                     <li class="">
                         <a href="?mod=user&act=logout">
@@ -52,6 +53,7 @@
             </div>
     
         </nav>
+        
         <section class="home">
             <?php 
                  if (!empty($posts)):
@@ -82,7 +84,8 @@
                         </tr>
                     </table>
 
-                </form>
+                </form>        
+
             </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -145,5 +148,6 @@
     })
     
         </script>
+        
     </body>
     </html>
