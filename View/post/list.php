@@ -38,7 +38,7 @@
                         
                     </ul>
                 </div>
-                <a class="btn btn-primary" href="<?php echo "index.php?Controller=post&action=add"?>" role="button">Link</a>
+                <a class="btn btn-primary" href="<?php echo "index.php?Controller=post&action=add"?>" role="button">Add</a>
 
                 <div class="bottom-content">
                     <li class="">
